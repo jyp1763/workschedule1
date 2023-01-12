@@ -5,26 +5,28 @@ const container = $(".container");
 const time = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
 const currentHour = moment().hour() - 9;
 const date = $("<h1>");
+var value = $(this).siblings('.description').val();
+
 
 
 date.text(moment().format('dddd MMMM Do' + ", " + 'YYYY'));
 container.append(date);
 
-function saveTask() {
-    localStorage.setItem($(this).attr("id"), $(this).prev().val());
+localStorage.setItem(time, value);
 
-    $(this).prev().transfer( {
-        to: $( $(this) ),
-        duration: 400
-      } );
-};
 window.onload = onSiteLoaded();
+
+$('.notification').addClass('show');
+setTimeout(function () {
+    $('.notification').removeClass('show');
+  }, 5000);
+
+
+
 
 $(".saveBtn").on("click", function () {
 
 })
-localStorage.setItem(time, text); 
-
 
 function onSiteLoaded() {
     for (i = 0; i < 9; i++) {
