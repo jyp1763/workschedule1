@@ -7,22 +7,30 @@ const currentHour = moment().hour() - 9;
 const date = $("<h1>");
 var value = $(this).siblings('.description').val();
 
-
-
 date.text(moment().format('dddd MMMM Do' + ", " + 'YYYY'));
 container.append(date);
 
-localStorage.setItem(time, value);
+function saveTask() {
+    localStorage.setItem($(this).attr("id"), $(this).prev().val());
 
+    $(this).prev().transfer( {
+        to: $( $(this) ),
+        duration: 400
+      } );
+};
+localStorage.setItem(time,value);
+localStorage.getItem(time, value);
+
+$("9am").val(localStorage.getItem("9am"));
+$("10am").val(localStorage.getItem("10am"));
+$("11am").val(localStorage.getItem("11am"));
+$("12pm").val(localStorage.getItem("12pm"));
+$("1pm").val(localStorage.getItem("1pm"));
+$("2pm").val(localStorage.getItem("2pm"));
+$("3pm").val(localStorage.getItem("3pm"));
+$("4pm").val(localStorage.getItem("4pm"));
+$("5pm").val(localStorage.getItem("5pm"));
 window.onload = onSiteLoaded();
-
-$('.notification').addClass('show');
-setTimeout(function () {
-    $('.notification').removeClass('show');
-  }, 5000);
-
-
-
 
 $(".saveBtn").on("click", function () {
 
